@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AnimaticsBond'
-  s.version          = '1.0.0'
+  s.version          = '1.0.2'
   s.summary          = 'A framework used to bind animations with Bond'
 
   s.description      = <<-DESC
@@ -32,6 +32,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-  s.dependency 'Bond', '~> 6.3.0'
-  s.dependency 'Animatics', '~> 1.0.0'
+  s.dependency 'Bond', '~> 6.5.0'
+  s.dependency 'Animatics', '~> 1.1.0'
 end
