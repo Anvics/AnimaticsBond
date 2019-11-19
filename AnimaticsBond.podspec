@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AnimaticsBond'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'A framework used to bind animations with Bond'
 
   s.description      = <<-DESC
@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'
+  s.swift_version = '4.2'
 
   s.source_files = 'AnimaticsBond/Classes/**/*'
   
@@ -32,6 +33,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-  s.dependency 'Bond', '~> 7.2.0'
-  s.dependency 'Animatics', '~> 1.1.0'
+  s.dependency 'Bond'#, '~> 7.2.0'
+  s.dependency 'Animatics'#, '~> 1.1.0'
 end

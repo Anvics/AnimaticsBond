@@ -10,14 +10,14 @@ extension Bool: BoolType{
 }
 
 public extension Signal where Element: BoolType{
-    public func animateTrue(_ animator: AnimaticsReady, initiallyPerform: Bool? = true){
+    func animateTrue(_ animator: AnimaticsReady, initiallyPerform: Bool? = true){
         if let ip = initiallyPerform{
             ip ? animator.performWithoutAnimation() : animator.reversedAnimation().performWithoutAnimation()
         }
         _ = observeNext { $0.boolValue ? animator.animate() : animator.reversedAnimation().animate() }
     }
     
-    public func animateFalse(_ animator: AnimaticsReady, initiallyPerform: Bool? = false){
+    func animateFalse(_ animator: AnimaticsReady, initiallyPerform: Bool? = false){
         if let ip = initiallyPerform{
             !ip ? animator.performWithoutAnimation() : animator.reversedAnimation().performWithoutAnimation()
         }
@@ -26,7 +26,7 @@ public extension Signal where Element: BoolType{
 }
 
 public extension Signal{
-    public func animate(_ animator: AnimaticsReady){
+    func animate(_ animator: AnimaticsReady){
         _ = observeNext { _ in animator.animate() }
     }
 }
