@@ -1,7 +1,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 Srdan Rasic (@srdanrasic)
+//  Copyright (c) 2020 Srdan Rasic (@srdanrasic)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,17 +22,23 @@
 //  THE SOFTWARE.
 //
 
-public typealias Signal1<Element> = Signal<Element, NoError>
-public typealias SafeSignal<Element> = Signal<Element, NoError>
+import Foundation
 
-public typealias Observer1<Element> = (Event<Element, NoError>) -> Void
-public typealias SafeObserver<Element> = (Event<Element, NoError>) -> Void
+public protocol Subscriber {
 
-public typealias PublishSubject1<Element> = PublishSubject<Element, NoError>
-public typealias SafePublishSubject<Element> = PublishSubject<Element, NoError>
+    associatedtype Input
+    associatedtype Failure: Error
 
-public typealias ReplaySubject1<Element> = ReplaySubject<Element, NoError>
-public typealias SafeReplaySubject<Element> = ReplaySubject<Element, NoError>
+    func receive(subscription: Subscription)
 
-public typealias ReplayOneSubject1<Element> = ReplayOneSubject<Element, NoError>
-public typealias SafeReplayOneSubject<Element> = ReplayOneSubject<Element, NoError>
+    func receive(_ input: Self.Input) -> Subscribers.Demand
+
+    func receive(completion: Subscribers.Completion<Self.Failure>)
+}
+
+extension Subscriber where Self.Input == Void {
+
+    public func receive() -> Subscribers.Demand {
+        return receive(())
+    }
+}

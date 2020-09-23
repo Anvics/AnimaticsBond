@@ -1,21 +1,21 @@
 PODS:
   - Animatics (1.1.2)
-  - AnimaticsBond (1.1.0):
-    - Animatics (~> 1.1.0)
-    - Bond (~> 7.2.0)
-  - Bond (7.2.1):
-    - Differ (~> 1.3)
-    - ReactiveKit (~> 3.9)
-  - Differ (1.3.0)
-  - ReactiveKit (3.9.7)
+  - AnimaticsBond (1.1.1):
+    - Animatics
+    - Bond
+  - Bond (7.6.6):
+    - Differ (~> 1.4)
+    - ReactiveKit (~> 3.14)
+  - Differ (1.4.5)
+  - ReactiveKit (3.17.4)
 
 DEPENDENCIES:
-  - Animatics (~> 1.1.0)
+  - Animatics
   - AnimaticsBond (from `../`)
-  - Bond (~> 7.2.0)
+  - Bond
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Animatics
     - Bond
     - Differ
@@ -27,11 +27,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Animatics: c50a33999bbefc71addec9b9a4eb839dfae811d9
-  AnimaticsBond: 1d79a5d5f027bc2d04712f120cf7c77f3a29c619
-  Bond: 663dd8da3eccadb4d7d57243499d387f9976580d
-  Differ: 9fcee7602542d7c6484ce05a0faec1c11258ed63
-  ReactiveKit: 5f4c440715d671901c382ae6b42ed3337ce4699b
+  AnimaticsBond: 2fecf4383a0e2a87273ae05e394ceae9bd101ac1
+  Bond: 9e7d901cf4ed825b6004a93dd0a7f1c7479e2834
+  Differ: 3b6bd78e2b20cc795d9a86f7641d087524e4273e
+  ReactiveKit: f9f9e079efa39312c597bf1508ef4810d111ce76
 
-PODFILE CHECKSUM: 49243353c67c52033bb8a73fdaa4a715375e7a75
+PODFILE CHECKSUM: 3fd8529a11cebd2983aa84c03de82193ce14ac94
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.9.3

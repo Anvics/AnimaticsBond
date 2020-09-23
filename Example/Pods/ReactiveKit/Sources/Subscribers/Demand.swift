@@ -1,7 +1,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 Srdan Rasic (@srdanrasic)
+//  Copyright (c) 2020 Srdan Rasic (@srdanrasic)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,25 +22,23 @@
 //  THE SOFTWARE.
 //
 
-public protocol OptionalProtocol {
-  associatedtype Wrapped
-  var _unbox: Optional<Wrapped> { get }
-  init(nilLiteral: ())
-  init(_ some: Wrapped)
-}
+import Foundation
 
-extension Optional: OptionalProtocol {
-  public var _unbox: Optional<Wrapped> {
-    return self
-  }
-}
+extension Subscribers {
 
-func ==<O: OptionalProtocol>(lhs: O, rhs: O) -> Bool
-  where O.Wrapped: Equatable {
-    return lhs._unbox == rhs._unbox
-}
+    public struct Demand: Equatable, Hashable {
+        
+        public let value: Int
 
-func !=<O: OptionalProtocol>(lhs: O, rhs: O) -> Bool
-  where O.Wrapped: Equatable {
-    return !(lhs == rhs)
+        private init(value: Int) {
+            self.value = value
+        }
+        
+        public static let unlimited: Subscribers.Demand = .init(value: Int.max)
+
+        @available(*, unavailable, message: "Not supported yet.")
+        public static func max(_ value: Int) -> Subscribers.Demand {
+            return .init(value: value)
+        }
+    }
 }

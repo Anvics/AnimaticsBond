@@ -1,7 +1,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 Srdan Rasic (@srdanrasic)
+//  Copyright (c) 2020 Srdan Rasic (@srdanrasic)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,50 +22,8 @@
 //  THE SOFTWARE.
 //
 
-/// An event of a sequence.
-public enum Event<Element, Error: Swift.Error> {
+import Foundation
 
-  /// An event that carries next element.
-  case next(Element)
-
-  /// An event that represents failure. Carries an error.
-  case failed(Error)
-
-  /// An event that marks the completion of a sequence.
-  case completed
-}
-
-extension Event {
-
-  /// Return `true` in case of `.failure` or `.completed` event.
-  public var isTerminal: Bool {
-    switch self {
-    case .next:
-      return false
-    default:
-      return true
-    }
-  }
-
-  /// Returns the next element, or nil if the event is not `.next`
-  public var element: Element? {
-    switch self {
-    case .next(let element):
-      return element
-
-    default:
-      return nil
-    }
-  }
-
-  /// Return the failed error, or nil if the event is not `.failed`
-  public var error: Error? {
-    switch self {
-    case .failed(let error):
-      return error
-
-    default:
-      return nil
-    }
-  }
+public protocol Subscription: Cancellable {
+    func request(_ demand: Subscribers.Demand)
 }

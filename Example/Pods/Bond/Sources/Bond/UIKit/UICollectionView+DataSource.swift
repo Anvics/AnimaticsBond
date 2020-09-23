@@ -27,7 +27,7 @@
 import UIKit
 import ReactiveKit
 
-extension SignalProtocol where Element: SectionedDataSourceChangesetConvertible, Error == NoError {
+extension SignalProtocol where Element: SectionedDataSourceChangesetConvertible, Error == Never {
 
     /// Binds the signal of data source elements to the given table view.
     ///
@@ -58,7 +58,7 @@ extension SignalProtocol where Element: SectionedDataSourceChangesetConvertible,
     }
 }
 
-extension SignalProtocol where Element: SectionedDataSourceChangesetConvertible, Element.Changeset.Collection: QueryableSectionedDataSourceProtocol, Error == NoError {
+extension SignalProtocol where Element: SectionedDataSourceChangesetConvertible, Element.Changeset.Collection: QueryableSectionedDataSourceProtocol, Error == Never {
 
     /// Binds the signal of data source elements to the given table view.
     ///
@@ -159,7 +159,7 @@ open class CollectionViewBinderDataSource<Changeset: SectionedDataSourceChangese
         return changeset?.collection.numberOfSections ?? 0
     }
 
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return changeset?.collection.numberOfItems(inSection: section) ?? 0
     }
 

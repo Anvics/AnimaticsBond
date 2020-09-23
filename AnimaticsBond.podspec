@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AnimaticsBond'
-  s.version          = '1.1.1'
+  s.version          = '1.1.2'
   s.summary          = 'A framework used to bind animations with Bond'
 
   s.description      = <<-DESC

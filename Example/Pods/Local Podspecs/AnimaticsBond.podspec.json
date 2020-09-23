@@ -1,6 +1,6 @@
 {
   "name": "AnimaticsBond",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "summary": "A framework used to bind animations with Bond",
   "description": "AnimaticsBond is a framework which helps you to bind Animatics animations with Bond events",
   "homepage": "https://github.com/Anvics/AnimaticsBond.git",
@@ -13,19 +13,21 @@
   },
   "source": {
     "git": "https://github.com/Anvics/AnimaticsBond.git",
-    "tag": "1.1.0"
+    "tag": "1.1.1"
   },
   "platforms": {
     "ios": "10.0"
   },
+  "swift_versions": "4.2",
   "source_files": "AnimaticsBond/Classes/**/*",
   "frameworks": "UIKit",
   "dependencies": {
     "Bond": [
-      "~> 7.2.0"
+
     ],
     "Animatics": [
-      "~> 1.1.0"
+
     ]
-  }
+  },
+  "swift_version": "4.2"
 }

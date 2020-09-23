@@ -1,7 +1,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 Srdan Rasic (@srdanrasic)
+//  Copyright (c) 2019 Srdan Rasic (@srdanrasic)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,59 +22,28 @@
 //  THE SOFTWARE.
 //
 
-public protocol ResultProtocol {
-  associatedtype Value
-  associatedtype Error: Swift.Error
+import Foundation
+import Dispatch
 
-  var value: Value? { get }
-  var error: Error? { get }
+/// A protocol that defines when and how to execute a closure.
+public protocol Scheduler {
+
+    /// Performs the action at the next possible opportunity.
+    func schedule(_ action: @escaping () -> Void)
 }
 
-/// An enum representing either a failure or a success.
-public enum Result<T, E: Swift.Error>: CustomStringConvertible {
+extension ExecutionContext: Scheduler {
 
-  case success(T)
-  case failure(E)
-
-  /// Constructs a result with a success value.
-  public init(_ value: T) {
-    self = .success(value)
-  }
-
-  /// Constructs a result with an error.
-  public init(_ error: E) {
-    self = .failure(error)
-  }
-
-  public var description: String {
-    switch self {
-    case let .success(value):
-      return ".success(\(value))"
-    case let .failure(error):
-      return ".failure(\(error))"
+    @inlinable
+    public func schedule(_ action: @escaping () -> Void) {
+        context(action)
     }
-  }
 }
 
-extension Result: ResultProtocol {
+extension DispatchQueue: Scheduler {
 
-  public var value: T? {
-    if case .success(let value) = self {
-      return value
-    } else {
-      return nil
+    @inlinable
+    public func schedule(_ action: @escaping () -> Void) {
+        async(execute: action)
     }
-  }
-
-  public var error: E? {
-    if case .failure(let error) = self {
-      return error
-    } else {
-      return nil
-    }
-  }
-
-  public var unbox: Result<T, E> {
-    return self
-  }
 }
